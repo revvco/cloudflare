@@ -36,6 +36,18 @@ module Cloudflare
       def zone_ssl_settings(zone_id, value)
         Client::Services::ZoneService.zone_ssl_settings(zone_id, value)
       end
+
+      def get_dns_record(zone_id, dns_record_id)
+        Client::Services::ZoneService.get_dns_record(zone_id, dns_record_id)
+      end
+
+      def create_dns_record(zone_id, type, name, content, ttl=120, proxied=true)
+        Client::Services::ZoneService.create_dns_record(zone_id, type, name, content, ttl, proxied)
+      end
+
+      def update_dns_record(zone_id, dns_record_id, type, name, content, ttl=120, proxied=true)
+        Client::Services::ZoneService.update_dns_record(zone_id, dns_record_id, type, name, content, ttl, proxied)
+      end
     end
   end
 end
