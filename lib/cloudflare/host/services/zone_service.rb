@@ -14,7 +14,7 @@ module Cloudflare
             params = {
               zone_name: zone_name
             }
-            post_act(:zone_lookup, params).body)
+            post_act(:zone_lookup, params)
           end
 
           def zone_set(zone_name, resolve_to, subdomains)
