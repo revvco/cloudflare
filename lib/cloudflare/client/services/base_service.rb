@@ -30,6 +30,14 @@ module Cloudflare
             patch(url, body: body, headers: get_headers)
           end
 
+          def put_act(url, body)
+            put(url, body: body, headers: get_headers)
+          end
+
+          def delete_act(url, body)
+            delete(url, body: body, headers: get_headers)
+          end
+
           # Return required headers for making an http request with Cloudflare
           # @param [String] content_type - The MIME type of the body of the request, default is 'application/json'
           # @return [Hash] - authorization headers
