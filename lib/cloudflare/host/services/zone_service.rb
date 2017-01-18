@@ -14,8 +14,7 @@ module Cloudflare
             params = {
               zone_name: zone_name
             }
-            response = JSON.parse(post_act(:zone_lookup, params).body)["response"]
-            Cloudflare::Util::Component.to_ostruct(response)
+            post_act(:zone_lookup, params).body)
           end
 
           def zone_set(zone_name, resolve_to, subdomains)
@@ -28,8 +27,8 @@ module Cloudflare
               resolve_to: resolve_to,
               subdomains: subdomains
             }
-            response = JSON.parse(post_act(:zone_set, params).body)["response"]
-            Cloudflare::Util::Component.to_ostruct(response)
+            
+            post_act(:zone_set, params)
           end
         end
       end

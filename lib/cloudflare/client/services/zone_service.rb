@@ -13,8 +13,7 @@ module Cloudflare
             url = Util::Config.get('client.base_url') + Util::Config.get('client.zones') 
             url = build_url(url, params)
 
-            response = JSON.parse(get_act(url, params).body)["result"]
-            Cloudflare::Util::Component.parse(response)
+            get_act(url, params)
           end
 
           def zone_ssl_verification(zone_id)
@@ -22,8 +21,7 @@ module Cloudflare
 
             url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_ssl_verification'), zone_id)
 
-            response = JSON.parse(get_act(url).body)["result"]
-            Cloudflare::Util::Component.parse(response)
+            get_act(url)
           end
 
           def zone_ssl_settings(zone_id, value)
@@ -35,8 +33,7 @@ module Cloudflare
 
             url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_ssl_settings'), zone_id)
 
-            response = JSON.parse(patch_act(url, params.to_json).body)["result"]
-            Cloudflare::Util::Component.parse(response)
+            patch_act(url, params.to_json)
           end
 
           def get_dns_record(zone_id, dns_record_id)
@@ -45,8 +42,7 @@ module Cloudflare
 
             url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_dns_records_crud'), zone_id, dns_record_id)
 
-            response = JSON.parse(get_act(url).body)["result"]
-            Cloudflare::Util::Component.parse(response)
+            get_act(url)
           end
 
           def create_dns_record(zone_id, type, name, content, ttl=120, proxied=true)
@@ -65,8 +61,7 @@ module Cloudflare
 
             url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_dns_records'), zone_id)
 
-            response = JSON.parse(post_act(url, params.to_json).body)["result"]
-            Cloudflare::Util::Component.parse(response)
+            post_act(url, params.to_json)
           end
 
           def update_dns_record(zone_id, dns_record_id, type, name, content, ttl=120, proxied=true)
@@ -86,8 +81,7 @@ module Cloudflare
 
             url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_dns_records_crud'), zone_id, dns_record_id)
 
-            response = JSON.parse(put_act(url, params.to_json).body)["result"]
-            Cloudflare::Util::Component.parse(response)
+            put_act(url, params.to_json)
           end
         end
       end

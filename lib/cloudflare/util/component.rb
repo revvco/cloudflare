@@ -31,6 +31,11 @@ module Cloudflare
         end
         o
       end
+
+      def self.parse_response(response)
+        parsed = JSON.parse(response.body)
+        self.to_ostruct(parsed)
+      end
     end
   end
 end

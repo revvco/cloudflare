@@ -19,23 +19,23 @@ module Cloudflare
           # @param [String] content_type - The MIME type of the body of the request, default is 'application/json'
           # @return [Hash] - authorization headers
           def post_act(url, body)
-            post(url, body: body, headers: get_headers)
+            Cloudflare::Util::Component.parse_response(post(url, body: body, headers: get_headers))
           end
 
           def get_act(url, body=nil)
-            get(url, body: body, headers: get_headers)
+            Cloudflare::Util::Component.parse_response(get(url, body: body, headers: get_headers))
           end
 
           def patch_act(url, body)
-            patch(url, body: body, headers: get_headers)
+            Cloudflare::Util::Component.parse_response(patch(url, body: body, headers: get_headers))
           end
 
           def put_act(url, body)
-            put(url, body: body, headers: get_headers)
+            Cloudflare::Util::Component.parse_response(put(url, body: body, headers: get_headers))
           end
 
           def delete_act(url, body)
-            delete(url, body: body, headers: get_headers)
+           Cloudflare::Util::Component.parse_response(delete(url, body: body, headers: get_headers))
           end
 
           # Return required headers for making an http request with Cloudflare
