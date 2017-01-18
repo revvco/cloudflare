@@ -27,7 +27,7 @@ module Cloudflare
       def self.to_ostruct(input)
         o = OpenStruct.new(input)
         input.each do |k,v|
-          o.send(:"#{k}=", Component.parse(v)) if v.is_a? Hash
+          o.send(:"#{k}=", Component.parse(v)) if v.is_a?(Hash) || v.is_a?(Array)
         end
         o
       end
