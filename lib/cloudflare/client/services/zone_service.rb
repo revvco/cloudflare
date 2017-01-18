@@ -51,7 +51,7 @@ module Cloudflare
 
           def create_dns_record(zone_id, type, name, content, ttl=120, proxied=true)
             raise Exceptions::ServiceException, "Zone ID is required." if zone_id.nil?
-            raise Exceptions::ServiceException, "Type is required (A, AAAA, CNAME, TXT, SRV, LOC, MX, NS, SPF)." if type.nil? || !(%w(A, AAAA CNAME TXT SRV LOC MX NS SPF).include?(type.upcase))
+            raise Exceptions::ServiceException, "Type is required (A, AAAA, CNAME, TXT, SRV, LOC, MX, NS, SPF)." if type.nil? || !(%w(A AAAA CNAME TXT SRV LOC MX NS SPF).include?(type.upcase))
             raise Exceptions::ServiceException, "Name is required." if name.nil?
             raise Exceptions::ServiceException, "Content is required." if content.nil?
 
@@ -72,7 +72,7 @@ module Cloudflare
           def update_dns_record(zone_id, dns_record_id, type, name, content, ttl=120, proxied=true)
             raise Exceptions::ServiceException, "Zone ID is required." if zone_id.nil?
             raise Exceptions::ServiceException, "DNS Record ID is required." if dns_record_id.nil?
-            raise Exceptions::ServiceException, "Type is required (A, AAAA, CNAME, TXT, SRV, LOC, MX, NS, SPF)." if type.nil? || !(%w(A, AAAA CNAME TXT SRV LOC MX NS SPF).include?(type.upcase))
+            raise Exceptions::ServiceException, "Type is required (A, AAAA, CNAME, TXT, SRV, LOC, MX, NS, SPF)." if type.nil? || !(%w(A AAAA CNAME TXT SRV LOC MX NS SPF).include?(type.upcase))
             raise Exceptions::ServiceException, "Name is required." if name.nil?
             raise Exceptions::ServiceException, "Content is required." if content.nil?
 

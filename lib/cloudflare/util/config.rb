@@ -23,7 +23,7 @@ module Cloudflare
           :zones                          => 'zones',
           :zones_ssl_verification         => 'zones/%s/ssl/verification',
           :zones_ssl_settings             => 'zones/%s/settings/ssl',
-          :zones_dns_records              => 'zones/%s/dns_records'
+          :zones_dns_records              => 'zones/%s/dns_records',
           :zones_dns_records_crud         => 'zones/%s/dns_records/%s'
         },
 
