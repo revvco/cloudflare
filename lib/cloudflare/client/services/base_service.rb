@@ -36,7 +36,7 @@ module Cloudflare
           Cloudflare::Util::Component.parse_response(HTTParty.put(url, body: body, headers: get_headers))
         end
 
-        def delete_act(url, body)
+        def delete_act(url, body=nil)
          Cloudflare::Util::Component.parse_response(HTTParty.delete(url, body: body, headers: get_headers))
         end
 
