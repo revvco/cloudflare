@@ -47,8 +47,8 @@ module Cloudflare
         def get_headers(content_type = 'application/json')
           {
             'Content-Type'  => content_type,
-            "X-Auth-Email"  => BaseService.auth_email,
-            "X-Auth-Key"    => BaseService.auth_key
+            "X-Auth-Email"  => auth_email,
+            "X-Auth-Key"    => auth_key
           }
         end
 
