@@ -16,10 +16,10 @@ module Cloudflare
       # @param [String] auth_key - Cloudflare Client Auth key
       # @return
       def initialize(auth_email = nil, auth_key = nil)
-        if Client::Services::BaseService.auth_email.nil? || Client::Services::BaseService.auth_email == ''
+        if auth_email.nil?
           raise ArgumentError.new(Util::Config.get('errors.auth_email_missing'))
         end
-        if Client::Services::BaseService.auth_key.nil? || Client::Services::BaseService.auth_key == ''
+        if auth_key.nil?
           raise ArgumentError.new(Util::Config.get('errors.auth_key_missing'))
         end
         @zone_service = Host::Services::ZoneService.new(host_key, user_key)

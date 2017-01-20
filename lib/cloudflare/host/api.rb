@@ -16,10 +16,10 @@ module Cloudflare
       # @param [String] user_key - Cloudflare User Key
       # @return
       def initialize(host_key = nil, user_key = nil)
-        if Host::Services::BaseService.host_key.nil? || Host::Services::BaseService.host_key == ''
+        if host_key.nil?
           raise ArgumentError.new(Util::Config.get('errors.host_key_missing'))
         end
-        if Host::Services::BaseService.user_key.nil? || Host::Services::BaseService.user_key == ''
+        if user_key.nil?
           raise ArgumentError.new(Util::Config.get('errors.user_key_missing'))
         end
         @zone_service = Host::Services::ZoneService.new(host_key, user_key)
