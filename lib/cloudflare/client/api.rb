@@ -22,7 +22,7 @@ module Cloudflare
         if auth_key.nil?
           raise ArgumentError.new(Util::Config.get('errors.auth_key_missing'))
         end
-        @zone_service = Host::Services::ZoneService.new(host_key, user_key)
+        @zone_service = Client::Services::ZoneService.new(auth_email, auth_key)
       end
 
       # Zone Service Methods
