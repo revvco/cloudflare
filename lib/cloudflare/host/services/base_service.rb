@@ -8,7 +8,6 @@ module Cloudflare
   module Host
     module Services
       class BaseService
-        include HTTParty
         attr_accessor :host_key, :user_key
 
         def initialize(host_key, user_key)
@@ -30,7 +29,7 @@ module Cloudflare
         # @param [String] content_type - The MIME type of the body of the request, default is 'application/json'
         # @return [Hash] - authorization headers
         def post_act(act, params)
-          Cloudflare::Util::Component.parse_response(post(Cloudflare::Util::Config.get('host.base_url'), body: get_body(act, params)))
+          Cloudflare::Util::Component.parse_response(HTTParty.post(Cloudflare::Util::Config.get('host.base_url'), body: get_body(act, params)))
         end
       end
     end

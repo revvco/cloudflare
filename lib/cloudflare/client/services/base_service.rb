@@ -8,7 +8,6 @@ module Cloudflare
   module Client
     module Services
       class BaseService
-        include HTTParty
         attr_accessor :auth_email, :auth_key
 
         def initialize(auth_email, auth_key)
@@ -22,23 +21,23 @@ module Cloudflare
         # @param [String] content_type - The MIME type of the body of the request, default is 'application/json'
         # @return [Hash] - authorization headers
         def post_act(url, body)
-          Cloudflare::Util::Component.parse_response(post(url, body: body, headers: get_headers))
+          Cloudflare::Util::Component.parse_response(HTTParty.post(url, body: body, headers: get_headers))
         end
 
         def get_act(url, body=nil)
-          Cloudflare::Util::Component.parse_response(get(url, body: body, headers: get_headers))
+          Cloudflare::Util::Component.parse_response(HTTParty.get(url, body: body, headers: get_headers))
         end
 
         def patch_act(url, body)
-          Cloudflare::Util::Component.parse_response(patch(url, body: body, headers: get_headers))
+          Cloudflare::Util::Component.parse_response(HTTParty.patch(url, body: body, headers: get_headers))
         end
 
         def put_act(url, body)
-          Cloudflare::Util::Component.parse_response(put(url, body: body, headers: get_headers))
+          Cloudflare::Util::Component.parse_response(HTTParty.put(url, body: body, headers: get_headers))
         end
 
         def delete_act(url, body)
-         Cloudflare::Util::Component.parse_response(delete(url, body: body, headers: get_headers))
+         Cloudflare::Util::Component.parse_response(HTTParty.delete(url, body: body, headers: get_headers))
         end
 
         # Return required headers for making an http request with Cloudflare
