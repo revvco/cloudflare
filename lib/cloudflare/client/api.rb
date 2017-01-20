@@ -49,6 +49,11 @@ module Cloudflare
       def update_dns_record(zone_id, dns_record_id, type, name, content, ttl=120, proxied=true)
         zone_service.update_dns_record(zone_id, dns_record_id, type, name, content, ttl, proxied)
       end
+
+      def destroy_dns_record(zone_id, dns_record_id)
+        zone_service.destroy_dns_record(zone_id, dns_record_id)
+      end
+
     end
   end
 end

@@ -83,6 +83,15 @@ module Cloudflare
 
             put_act(url, params.to_json)
           end
+
+          def destroy_dns_record(zone_id, dns_record_id)
+            raise Exceptions::ServiceException, "Zone ID is required." if zone_id.nil?
+            raise Exceptions::ServiceException, "DNS Record ID is required." if dns_record_id.nil?
+
+            url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_dns_records_crud'), zone_id, dns_record_id)
+
+            delete_act(url)
+          end
         end
       end
     end
