@@ -92,8 +92,8 @@ module Cloudflare
           delete_act(url)
         end
 
-        def zone_custom_hostname_list(params = nil)
-          url = Util::Config.get('client.base_url') + Util::Config.get('client.zones_custom_hostnames') 
+        def zone_custom_hostname_list(zone_id, params = nil)
+          url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_custom_hostnames'), zone_id)
           url = build_url(url, params)
 
           get_act(url, params)

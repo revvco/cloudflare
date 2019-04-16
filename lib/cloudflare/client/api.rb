@@ -54,8 +54,8 @@ module Cloudflare
         zone_service.destroy_dns_record(zone_id, dns_record_id)
       end
 
-      def zone_custom_hostname_list(params=nil)
-        zone_service.zone_custom_hostname_list(params)
+      def zone_custom_hostname_list(zone_id, params=nil)
+        zone_service.zone_custom_hostname_list(zone_id, params)
       end
       
       def zone_create_custom_hostname(zone_id, hostname)
