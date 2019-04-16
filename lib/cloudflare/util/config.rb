@@ -25,6 +25,9 @@ module Cloudflare
           :zones_ssl_settings             => 'zones/%s/settings/ssl',
           :zones_dns_records              => 'zones/%s/dns_records',
           :zones_dns_records_crud         => 'zones/%s/dns_records/%s'
+
+          :zones_custom_hostnames         => 'zones/%s/custom_hostnames'
+          :zones_custom_hostname          => 'zones/%s/custom_hostnames/%s'
         },
 
         # Errors to be returned for various exceptions

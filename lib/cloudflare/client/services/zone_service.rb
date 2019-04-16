@@ -91,6 +91,43 @@ module Cloudflare
 
           delete_act(url)
         end
+
+        def zone_custom_hostname_list(params = nil)
+          url = Util::Config.get('client.base_url') + Util::Config.get('client.zones_custom_hostnames') 
+          url = build_url(url, params)
+
+          get_act(url, params)
+        end
+
+        def zone_create_custom_hostname(zone_id, hostname)
+          raise Exceptions::ServiceException, "Zone ID is required." if zone_id.nil?
+          raise Exceptions::ServiceException, "Hostname is required." if hostname.nil?
+          params = { 
+            hostname: hostname.downcase
+          }
+
+          url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_custom_hostnames'), zone_id)
+
+          post_act(url, params.to_json)
+        end
+
+        def zone_custom_hostname(zone_id, custom_hostname_id)
+          raise Exceptions::ServiceException, "Zone ID is required." if zone_id.nil?
+          raise Exceptions::ServiceException, "Custom Hostname ID is required." if custom_hostname_id.nil?
+
+          url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_custom_hostname'), zone_id, custom_hostname_id)
+
+          get_act(url)
+        end
+
+        def zone_delete_custom_hostname(zone_id, custom_hostname_id)
+          raise Exceptions::ServiceException, "Zone ID is required." if zone_id.nil?
+          raise Exceptions::ServiceException, "Custom Hostname ID is required." if custom_hostname_id.nil?
+
+          url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_custom_hostname'), zone_id, custom_hostname_id)
+
+          delete_act(url)
+        end
       end
     end
   end
