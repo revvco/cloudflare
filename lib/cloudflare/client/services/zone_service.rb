@@ -99,12 +99,9 @@ module Cloudflare
           get_act(url, params)
         end
 
-        def zone_create_custom_hostname(zone_id, hostname)
+        def zone_create_custom_hostname(zone_id, params)
           raise Exceptions::ServiceException, "Zone ID is required." if zone_id.nil?
-          raise Exceptions::ServiceException, "Hostname is required." if hostname.nil?
-          params = { 
-            hostname: hostname.downcase
-          }
+          raise Exceptions::ServiceException, "Hostname is required." if params.nil?
 
           url = Util::Config.get('client.base_url') + sprintf(Util::Config.get('client.zones_custom_hostnames'), zone_id)
 

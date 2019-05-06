@@ -58,8 +58,8 @@ module Cloudflare
         zone_service.zone_custom_hostname_list(zone_id, params)
       end
       
-      def zone_create_custom_hostname(zone_id, hostname)
-        zone_service.zone_create_custom_hostname(zone_id, hostname)
+      def zone_create_custom_hostname(zone_id, params)
+        zone_service.zone_create_custom_hostname(zone_id, params)
       end
       
       def zone_custom_hostname(zone_id, custom_hostname_id)
